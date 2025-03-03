@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# Generar datos de ejemplo
+X = np.random.rand(100, 2)
+
+# Crear el modelo KMeans
+kmeans = KMeans(n_clusters=3, random_state=0).fit(X)
+
+# Predecir las etiquetas de los datos
+labels = kmeans.predict(X)
+
+# Obtener los centros de los clusters
+centers = kmeans.cluster_centers_
+
+# Graficar los datos y los centros de los clusters
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis')
+plt.scatter(centers[:, 0], centers[:, 1], c='red', marker='x')
+plt.title('K-Means Clustering')
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.show()
